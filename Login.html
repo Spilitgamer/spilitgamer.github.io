@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sign In</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0d1117;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #161b22;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 380px;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    color: #58a6ff;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #30363d;
+    background: #0d1117;
+    color: white;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.email-btn {
+    background: #238636;
+    color: white;
+}
+
+.google-btn {
+    background: white;
+    color: black;
+}
+
+.error {
+    color: #ff4d4d;
+    margin-top: 10px;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>SIGN IN</h1>
+
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+
+    <button class="email-btn" onclick="emailLogin()">Sign in</button>
+
+    <button class="google-btn" onclick="googleLogin()">Sign in with Google</button>
+
+    <div class="error" id="error"></div>
+</div>
+
+<!-- Firebase SDK (IMPORTANT - OUTSIDE SCRIPT) -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+<script>
+// 🔥 Firebase Config
+const firebaseConfig = {
+  apiKey: "AIzaSyBGkjsxjG6SpEgNwVpuzvh4LO9tA_2yKQU",
+  authDomain: "spilitgamer-9130b.firebaseapp.com",
+  projectId: "spilitgamer-9130b",
+  appId: "1:507088002680:web:efb0dd384d7c66a0ff178d"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+const errorBox = document.getElementById("error");
+
+// Email Login
+function emailLogin() {
+    let email = document.getElementById("email").value;
+    let pass = document.getElementById("password").value;
+
+    auth.signInWithEmailAndPassword(email, pass)
+    .then(() => {
+        window.location.href = "index.html";
+    })
+    .catch(error => {
+        errorBox.innerText = "❌ " + error.message;
+    });
+}
+
+// Google Login
+function googleLogin() {
+    let provider = new firebase.auth.GoogleAuthProvider();
+
+    auth.signInWithPopup(provider)
+    .then(() => {
+        window.location.href = "index.html";
+    })
+    .catch(error => {
+        errorBox.innerText = "❌ " + error.message;
+    });
+}
+</script>
+
+</body>
+</html>
