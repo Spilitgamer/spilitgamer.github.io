@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FAQ - SpilitGamer</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* Menu icon */
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  text-align: center;
+}
+
+/* Side menu */
+.side-menu {
+  width: 0;
+  height: 100%;
+  background-color: #111;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.4s;
+  padding-top: 60px;
+  z-index: 999;
+  text-align: center;
+}
+
+/* Links */
+.side-menu a {
+  display: block;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+}
+
+.side-menu a:hover {
+  background-color: #575757;
+}
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #050816;
+    color: white;
+}
+
+/* PARTICLES */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 25px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 12px;
+}
+
+/* TITLE */
+h1 {
+    text-align: center;
+    color: white;
+}
+
+/* FAQ BOX */
+.faq {
+    margin-top: 20px;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* QUESTION */
+.faq-question {
+    background: #111827;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    border-left: 4px solid #38bdf8;
+}
+
+/* ANSWER */
+.faq-answer {
+    display: none;
+    padding: 15px;
+    background: #0f172a;
+    color: #d1d5db;
+}
+/* FOOTER (same as home) */
+footer{
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+  background:rgba(0,0,0,0.6);
+  border-top:1px solid #1f2937;
+}
+footer a{
+  color:#38bdf8;
+  text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+    <!-- Menu Icon -->
+<div class="menu-icon" onclick="toggleMenu()">
+  ☰
+</div>
+
+<!-- Side Menu -->
+<div id="sideMenu" class="side-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="tips.html">Gaming Tips</a>
+    <a href="events.html">Events</a>
+        <a href="quiz.html">Quizzes</a>
+        <a href="challenges.html">Challenges</a>
+    <a href="review.html">Reviews</a>
+    <a href="faq.html">FAQ</a>
+      <a href="disclaimer.html">Disclaimer</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="terms.html">Terms</a>
+
+</div>
+
+
+<!-- PARTICLES -->
+<div id="particles-js"></div>
+
+<div class="container">
+
+<h1>Frequently Asked Questions (FAQ)</h1>
+
+<div class="faq">
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+What is SpilitGamer Website and what content does this website provide?
+</div>
+<div class="faq-answer">
+SpilitGamer Website is a gaming-focused website created for players who are passionate about improving their skills, learning new strategies, and staying updated with the latest gaming trends. This platform provides a wide range of content including gaming tips, step-by-step guides, event announcements, and entertaining content related to popular games such as Minecraft and other trending titles. Whether you are a beginner just starting your journey or an advanced player looking to sharpen your skills, this website offers helpful and easy-to-understand content designed for all levels of gamers.
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+How can I join Minecraft events hosted by SpilitGamer?
+</div>
+<div class="faq-answer">
+To join Minecraft events, you need to become part of the official community through the Discord server. All event-related updates, including schedules, rules, and participation instructions, are shared there. Once you join the Discord server, you will be able to stay informed about upcoming events and participate easily. These events are designed to be fun, competitive, and engaging for players of all skill levels, and they often include rewards such as special ranks and recognition within the community.
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+Is this website free to use and do I need to create an account?
+</div>
+<div class="faq-answer">
+Yes, the SpilitGamer website is completely free to use. You can access all the content, including guides, tips, and event information, without creating an account. The goal of this platform is to make gaming knowledge accessible to everyone. However, some features like participating in events or interacting with the community may require joining external platforms such as Discord.
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+How can I improve my gaming skills using this website?
+</div>
+<div class="faq-answer">
+You can improve your gaming skills by regularly reading the guides and tips provided on this website. Start by understanding basic mechanics, then gradually move to advanced strategies. Practicing consistently, watching gameplay tutorials, and applying the techniques you learn from the website can significantly enhance your performance. Additionally, participating in events and interacting with other players can give you practical experience and new insights.
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+Can I submit my own reviews or feedback?
+</div>
+<div class="faq-answer">
+Yes, you can share your opinions and experiences through the Reviews page available on the website. This allows you to provide feedback, help other users, and become part of the growing gaming community. Your reviews remain saved and can also receive likes and replies from other users, making the interaction more engaging.
+</div>
+</div>
+<!-- FAQ 6 -->
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+What type of games are mainly covered on this website?
+</div>
+<div class="faq-answer">
+This website mainly focuses on popular and trending games, especially Minecraft, mobile games, and multiplayer competitive titles. The goal is to provide helpful content that is relevant to a wide range of players. Whether you enjoy survival games, creative sandbox games, or action-packed competitive matches, you will find useful tips and guides here. The content is regularly updated to include new games and features so users always stay informed about what’s trending in the gaming world.
+</div>
+</div>
+
+<!-- FAQ 7 -->
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+How often is new content added to the website?
+</div>
+<div class="faq-answer">
+New content is added regularly to keep the website fresh and useful for visitors. This includes gaming tips, guides, updates, and event announcements. The goal is to upload new information as frequently as possible so that users can always find something new to learn or explore. You can check back often or follow updates through community platforms like Discord to stay informed.
+</div>
+</div>
+
+<!-- FAQ 8 -->
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+Do I need a powerful device to follow the gaming tips shared here?
+</div>
+<div class="faq-answer">
+No, most of the tips and guides provided on this website are designed for all types of devices, including low-end mobile phones and basic PCs. While some advanced features may require better hardware, the majority of strategies focus on improving skills, game understanding, and smart gameplay rather than relying on expensive setups. This makes the content accessible to everyone.
+</div>
+</div>
+
+<!-- FAQ 9 -->
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+Is it safe to participate in events and interact with the community?
+</div>
+<div class="faq-answer">
+Yes, the community is designed to be friendly, respectful, and safe for all users. Events are organized with clear rules and guidelines to ensure fair play and a positive experience for everyone. Users are encouraged to behave respectfully and follow community rules while interacting with others. Any inappropriate behavior is not tolerated, helping maintain a safe environment.
+</div>
+</div>
+
+<!-- FAQ 10 -->
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+Can I suggest new ideas or improvements for the website?
+</div>
+<div class="faq-answer">
+Absolutely! User feedback is highly appreciated and helps improve the overall quality of the website. You can share your ideas, suggestions, or feedback through the Contact page or by interacting on the Discord server. Whether it’s a new feature, content idea, or improvement suggestion, your input helps make the platform better for everyone.
+</div>
+</div>
+
+<!-- FAQ 11 -->
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+Why should I choose this website over other gaming websites?
+</div>
+<div class="faq-answer">
+This website focuses on simplicity, clarity, and useful content without unnecessary complexity. The guides are written in an easy-to-understand way, making them perfect for beginners while still providing value to experienced players. Additionally, the combination of gaming tips, events, and commu
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 SpilitGamer. All Rights Reserved.</p>
+<p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+function toggleMenu() {
+  let menu = document.getElementById("sideMenu");
+  menu.style.width = (menu.style.width === "200px") ? "0" : "200px";
+}
+
+// FAQ TOGGLE
+function toggleFAQ(el) {
+  let answer = el.nextElementSibling;
+  answer.style.display = (answer.style.display === "block") ? "none" : "block";
+}
+</script>
+
+<!-- PARTICLES SCRIPT -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    color: { value: "#38bdf8" },
+    size: { value: 2 },
+    move: { speed: 1.5 }
+  }
+});
+</script>
+
+<script>
+function toggleMenu() {
+  let menu = document.getElementById("sideMenu");
+
+  if (menu.style.width === "200px") {
+    menu.style.width = "0";
+  } else {
+    menu.style.width = "200px";
+  }
+}
+</script>
+</body>
+</html>

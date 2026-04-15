@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Disclaimer | SpilitGamer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#050816;
+  color:#fff;
+}
+
+/* PARTICLES */
+#particles-js{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  padding:15px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  padding:8px 14px;
+  border-radius:8px;
+}
+
+nav a:hover{
+  background:#38bdf8;
+  color:black;
+}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:40px;
+}
+
+header h1{
+  color:white;
+}
+h2{
+  color: white;
+}
+
+/* CONTENT */
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+  line-height:1.8;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+  background:rgba(0,0,0,0.6);
+  border-top:1px solid #1f2937;
+}
+
+footer a{
+  color:#38bdf8;
+}
+/* Menu icon */
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  text-align: center;
+}
+
+/* Side menu */
+.side-menu {
+  width: 0;
+  height: 100%;
+  background-color: #111;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.4s;
+  padding-top: 60px;
+  z-index: 999;
+  text-align: center;
+}
+
+/* Links */
+.side-menu a {
+  display: block;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+}
+
+.side-menu a:hover {
+  background-color: #575757;
+}
+/* PARTICLES */
+#particles-js{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+/* PARTICLES */
+#particles-js{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+.btn {
+        display: inline-block;
+        margin-left: 25px;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #00ffcc;
+        color: #000;
+        border-radius: 5px;
+          text-decoration: none;
+    }
+</style>
+</head>
+
+<body>
+  <!-- Menu Icon -->
+<div class="menu-icon" onclick="toggleMenu()">
+  ☰
+</div>
+
+<!-- Side Menu -->
+<div id="sideMenu" class="side-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="tips.html">Gaming Tips</a>
+    <a href="events.html">Events</a>
+        <a href="quiz.html">Quizzes</a>
+        <a href="challenges.html">Challenges</a>
+    <a href="review.html">Reviews</a>
+        <a href="faq.html">FAQ</a>
+      <a href="disclaimer.html">Disclaimer</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="terms.html">Terms</a>
+
+</div>
+<!-- PARTICLES -->
+<div id="particles-js"></div>
+  <header>
+<h1>Disclaimer</h1>
+</header>
+
+<div class="container">
+  <p>Welcome to Spilitgamer. By using this website, you agree to the terms outlined in this disclaimer. If you do not agree with any part of this disclaimer, please do not use our website.</p>
+
+<h2>General Information</h2>
+<p>All the information provided on this website is published in good faith and for general informational and entertainment purposes only. Spilitgamer does not make any warranties about the completeness, reliability, or accuracy of this information.</p>
+<p>Any action you take upon the information you find on this website is strictly at your own risk. Spilitgamer will not be liable for any losses and/or damages in connection with the use of our website.</p>
+
+<h2>Gaming Content Disclaimer</h2>
+<p>This website provides gaming-related content, including tips, guides, server information, and event details, especially related to Minecraft and other games. While we try our best to ensure accuracy, we do not guarantee that all information is always up-to-date or error-free.</p>
+<p>Users are advised to verify any game-related details, such as server IPs or event schedules, before taking action.</p>
+
+<h2>External Links Disclaimer</h2>
+<p>Our website may contain links to external websites that are not provided or maintained by us. We do not guarantee the accuracy, relevance, or completeness of any information on these external websites.</p>
+<p>We are not responsible for any content, privacy policies, or practices of third-party websites.</p>
+
+<h2>Consent</h2>
+<p>By using our website, you hereby consent to our disclaimer and agree to its terms.</p>
+
+<h2>Updates</h2>
+<p>We may update, amend, or make changes to this document at any time without prior notice. Any changes will be prominently posted on this page.</p>
+
+<h2>Contact Us</h2>
+<p>If you have any questions regarding this disclaimer, you can contact us through our Contact Us page.</p>
+
+
+</div>
+<a href="index.html" class="btn">⬅ Back to Home</a>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 SpilitGamer. All Rights Reserved.</p>
+<p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
+</footer>
+<script>
+function toggleMenu() {
+  let menu = document.getElementById("sideMenu");
+
+  if (menu.style.width === "200px") {
+    menu.style.width = "0";
+  } else {
+    menu.style.width = "200px";
+  }
+}
+</script>
+
+<script>
+<!-- PARTICLES -->
+particlesJS("particles-js",{
+  particles:{
+    number:{value:60},
+    color:{value:"#38bdf8"},
+    size:{value:2},
+    move:{speed:1.5}
+  }
+});
+</script>
+
+</body>
+</html>

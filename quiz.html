@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minecraft Quiz - Spilitgamer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<style>
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#050816;
+  color:white;
+}
+
+h2{
+  font-size: 28px;
+  margin-top: 5px;
+}
+
+/* PARTICLES */
+#particles-js{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+/* PARTICLES */
+#particles-js{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+.container{
+  max-width:700px;
+  margin:60px auto;
+  background:rgba(0,0,0,0.6);
+  padding:25px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.question{font-size:20px;margin-bottom:20px;}
+
+.option{
+  display:block;
+  margin:10px 0;
+  padding:10px;
+  background:#1f2937;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.option:hover{background:#38bdf8;}
+
+.correct{background:green !important;}
+.wrong{background:red !important;}
+
+.next-btn{
+  margin-top:15px;
+  padding:10px 20px;
+  background:#38bdf8;
+  color:black;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+  float:right;
+}
+
+.score{margin-top:30px;font-size:16px;}
+
+/* FOOTER (same as home) */
+footer{
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+  background:rgba(0,0,0,0.6);
+  border-top:1px solid #1f2937;
+}
+footer a{
+  color:#38bdf8;
+  text-decoration:none;
+}
+footer p {
+    color: white;
+    white-space: nowrap;
+    font-size: 16px;  /* thoda chhota kar dega taake fit ho jaye */
+    margin: 6px;
+  
+}
+/* Menu icon */
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  text-align: center;
+}
+
+/* Side menu */
+.side-menu {
+  width: 0;
+  height: 100%;
+  background-color: #111;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.4s;
+  padding-top: 60px;
+  z-index: 999;
+  text-align: center;
+}
+
+/* Links */
+.side-menu a {
+  display: block;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+}
+
+.side-menu a:hover {
+  background-color: #575757;
+}
+</style>
+</head>
+
+<body>
+
+  <!-- Menu Icon -->
+<div class="menu-icon" onclick="toggleMenu()">
+  ☰
+</div>
+
+<!-- Side Menu -->
+<div id="sideMenu" class="side-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="tips.html">Gaming Tips</a>
+    <a href="events.html">Events</a>
+    <a href="quiz.html">Quizzes</a>
+        <a href="challenges.html">Challenges</a>
+    <a href="review.html">Reviews</a>
+        <a href="faq.html">FAQ</a>
+      <a href="disclaimer.html">Disclaimer</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="terms.html">Terms</a>
+
+</div>
+<!-- PARTICLES -->
+<div id="particles-js"></div>
+
+<div class="container">
+
+<h2>🎮 Minecraft Quizzes</h2>
+
+<div id="quiz">
+<div class="question" id="question"></div>
+<div id="options"></div>
+</div>
+
+<button class="next-btn" onclick="nextQuestion()">Next ➡</button>
+
+<div class="score" id="scoreBox">Correct: 0 | Wrong: 0</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 SpilitGamer. All Rights Reserved.</p>
+<p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
+</footer>
+
+<script>
+let index=0, correct=0, wrong=0, answered=false;
+
+// ✅ 100 UNIQUE QUESTIONS
+const quizData = [
+{q:"Which mob explodes?",a:"Creeper",o:["Zombie","Skeleton","Spider"]},
+{q:"What is needed to mine obsidian?",a:"Diamond Pickaxe",o:["Iron","Stone","Wood"]},
+{q:"Which mob teleports?",a:"Enderman",o:["Zombie","Cow","Pig"]},
+{q:"What is used to craft bread?",a:"Wheat",o:["Carrot","Potato","Apple"]},
+{q:"Which dimension has lava oceans?",a:"Nether",o:["End","Overworld","Sky"]},
+{q:"Who is the final boss?",a:"Ender Dragon",o:["Wither","Zombie","Skeleton"]},
+{q:"What do cows drop?",a:"Leather",o:["Feather","Bone","String"]},
+{q:"Which mob shoots arrows?",a:"Skeleton",o:["Zombie","Pig","Cow"]},
+{q:"What is used to enchant?",a:"Enchantment Table",o:["Crafting Table","Furnace","Chest"]},
+{q:"What block gives light?",a:"Torch",o:["Stone","Wood","Dirt"]},
+
+{q:"Which mob flies in Nether?",a:"Ghast",o:["Zombie","Cow","Pig"]},
+{q:"What is needed to make glass?",a:"Sand",o:["Stone","Iron","Wood"]},
+{q:"Which mob burns in sunlight?",a:"Zombie",o:["Spider","Creeper","Pig"]},
+{q:"What do chickens drop?",a:"Eggs",o:["Milk","Leather","Iron"]},
+{q:"Which ore is rarest?",a:"Emerald",o:["Coal","Iron","Gold"]},
+{q:"What is used to sleep?",a:"Bed",o:["Chest","Table","Stone"]},
+{q:"Which mob climbs walls?",a:"Spider",o:["Zombie","Cow","Pig"]},
+{q:"What do pigs drop?",a:"Pork",o:["Milk","Eggs","Leather"]},
+{q:"Which mob gives pearls?",a:"Enderman",o:["Zombie","Cow","Pig"]},
+{q:"What is used for arrows?",a:"Flint",o:["Stone","Iron","Wood"]},
+
+{q:"Which mob jumps high?",a:"Slime",o:["Cow","Pig","Zombie"]},
+{q:"What is used to fish?",a:"Fishing Rod",o:["Sword","Pickaxe","Axe"]},
+{q:"Which mob trades?",a:"Villager",o:["Zombie","Skeleton","Creeper"]},
+{q:"What is used to smelt?",a:"Furnace",o:["Chest","Bed","Crafting Table"]},
+{q:"Which mob is friendly?",a:"Cow",o:["Zombie","Creeper","Skeleton"]},
+{q:"What is Redstone used for?",a:"Machines",o:["Food","Armor","Tools"]},
+{q:"Which mob is neutral?",a:"Wolf",o:["Creeper","Zombie","Skeleton"]},
+{q:"What grows from seeds?",a:"Wheat",o:["Potato","Water Melon","Carrot"]},
+{q:"What is TNT made from?",a:"Gunpowder",o:["Milk","Iron","Wood"]},
+{q:"Which mob steals blocks?",a:"Enderman",o:["Zombie","Cow","Pig"]},
+{q:"Which block is used to activate Nether Portal?",a:"Flint",o:["Torch","Lava Bucket","Diamond"]},
+{q:"What do Ender Pearls do?",a:"Teleport player",o:["Heal","Build blocks","Craft tools"]},
+{q:"Which mob is found in oceans?",a:"Drowned",o:["Zombie","Creeper","Skeleton"]},
+{q:"What is used to make books?",a:"Paper",o:["Wood","Stone","Iron"]},
+{q:"Which tool breaks stone fastest?",a:"Pickaxe",o:["Axe","Shovel","Hoe"]},
+
+{q:"What is Minecraft main mode?",a:"Survival",o:["Race","Story","Battle"]},
+{q:"Which mob drops string?",a:"Spider",o:["Cow","Pig","Zombie"]},
+{q:"What is obsidian used for?",a:"Nether Portal",o:["Food","Armor","Weapons"]},
+{q:"Which block is transparent?",a:"Glass",o:["Stone","Wood","Dirt"]},
+{q:"What do villagers trade?",a:"Emeralds",o:["Iron","Gold","Diamond"]},
+
+{q:"Which mob explodes underwater?",a:"None",o:["Creeper","Zombie","Fish"]},
+{q:"What is used to grow crops faster?",a:"Bone Meal",o:["Water","Torch","Lava"]},
+{q:"Which dimension has End Cities?",a:"The End",o:["Nether","Overworld","Sky"]},
+{q:"What is used for map making?",a:"Paper",o:["Stone","Iron","Diamond"]},
+{q:"Which mob drops rotten flesh?",a:"Zombie",o:["Spider","Skeleton","Warden"]},
+
+{q:"What is used to cook food?",a:"Furnace",o:["Chest","Crafting Table","Smithing Table"]},
+{q:"Which mob is blind but strong?",a:"Warden",o:["Zombie","Creeper","Spider"]},
+{q:"What is used to ride pigs?",a:"Saddle",o:["Stick","Wheat","Iron"]},
+{q:"Which block stores items?",a:"Chest",o:["Furnace","Crafting Table","Glass"]},
+{q:"What is used to make armor?",a:"Iron",o:["Stone","Emerald","Dirt"]},
+
+{q:"Which mob appears in caves?",a:"Bat",o:["Cow","Pig","Zombie"]},
+{q:"What is used for brewing potions?",a:"Brewing Stand",o:["Furnace","Chest","Table"]},
+{q:"Which mob guards villages?",a:"Iron Golem",o:["Zombie","Creeper","Skeleton"]},
+{q:"What is used to grow trees faster?",a:"Bone Meal",o:["Water","Lava","Stone"]},
+{q:"Which mob is boss in Nether?",a:"Wither",o:["Ender Dragon","Zombie","Pig"]},
+
+{q:"What is used to craft shield?",a:"Iron",o:["Stone","Gold","Diamond"]},
+{q:"Which item attracts lightning?",a:"Trident",o:["Sword","Bow","Pickaxe"]},
+{q:"What is used for auto farms?",a:"Redstone",o:["Glass","Dirt","Sand"]},
+{q:"Which mob is invisible sometimes?",a:"Wandering Trader",o:["Cow","Pig","Zombie"]},
+{q:"What is Minecraft currency?",a:"Coin",o:["Gold","Diamond","Emerald"]},
+{q:"What is used to make a Netherite ingot?",a:"Ancient Debris + Gold",o:["Iron + Coal","Diamond + Stone","Lava + Sand"]},
+{q:"Which mob can carry blocks?",a:"Enderman",o:["Zombie","Creeper","Spider"]},
+{q:"What is used to tame horses?",a:"Saddle",o:["Bread","Stone","Coal"]},
+{q:"Which block is required for beacon?",a:"Star",o:["Plank","Flint","Sand"]},
+{q:"What drops from Wither boss?",a:"Nether Star",o:["Diamond","Emerald","Gold"]},
+
+{q:"Which mob is found in swamp?",a:"Slime",o:["Cow","Pig","Chicken"]},
+{q:"What is used for fast travel in Nether?",a:"Ice Boat",o:["Ladder","Stone","Wood"]},
+{q:"Which mob explodes?",a:"Creeper",o:["Zombie","Skeleton","Spider"]},
+{q:"What is used to craft compass?",a:"Iron",o:["Gold","Wood","Diamond"]},
+{q:"Which tool is best for digging dirt?",a:"Shovel",o:["Pickaxe","Axe","Sword"]},
+
+{q:"Which mob drops ink sac?",a:"Squid",o:["Fish","Cow","Turtle"]},
+{q:"What is used to grow nether wart?",a:"Soul Sand",o:["Dirt","Stone","Gravel"]},
+{q:"Which mob is invisible in rain?",a:"Phantom",o:["Zombie","Cow","Pig"]},
+{q:"What is used for TNT ignition?",a:"Fire",o:["Water","Stone","Sand"]},
+{q:"Which block is used for slime movement?",a:"Slime Block",o:["Glass","Wood","Iron"]},
+
+{q:"What is used to cure zombie villager?",a:"Golden Apple",o:["Bread","Milk","Diamond"]},
+{q:"Which mob drops rabbit hide?",a:"Rabbit",o:["Cow","Pig","Sheep"]},
+{q:"What is used for underwater breathing?",a:"Potion of Water Breathing",o:["Milk","Bread","Apple"]},
+{q:"Which structure has loot chests?",a:"Dungeon",o:["Tree","Hill","House"]},
+{q:"What is used to craft leads?",a:"Slimeball",o:["Iron","Wood","Gold"]},
+
+{q:"Which mob is boss in ocean monument?",a:"Elder Guardian",o:["Drowned","Squid","Fish"]},
+{q:"What is used to speed mining?",a:"Efficiency",o:["Sharpness","Luck","Fire Aspect"]},
+{q:"Which block creates slime farms?",a:"Slime Chunk",o:["Stone","Wood","Glass"]},
+{q:"What is used for armor durability?",a:"Anvil",o:["Chest","Furnace","Table"]},
+{q:"Which mob attacks in groups?",a:"Zombies",o:["Creeper","Enderman","Witch"]},
+
+{q:"What is used to make fireworks?",a:"Gunpowder",o:["Stone","Iron","Dirt"]},
+{q:"Which mob drops feathers?",a:"Chicken",o:["Cow","Pig","Sheep"]},
+{q:"What is used to attract animals?",a:"Wheat",o:["Pork","Mutton","Iron"]},
+{q:"Which item helps locate structures?",a:"Explorer Map",o:["Sword","Pickaxe","Shovel"]},
+{q:"What is used for fast farming?",a:"Hoe",o:["Sword","Pickaxe","Axe"]},
+
+{q:"Which mob drops prismarine?",a:"Guardian",o:["Zombie","Cow","Pig"]},
+{q:"What is used to build bridges in Nether?",a:"Cobblestone",o:["Gravel","Door","Sand"]},
+{q:"Which mob is found in desert temples?",a:"Husk",o:["Zombie","Creeper","Spider"]},
+{q:"What is used for infinite water?",a:"Water Bucket Source Block",o:["Lava","Stone","Wood"]},
+{q:"Which item is used to rename items?",a:"Anvil",o:["Furnace","Table","Chest"]},
+{q:"Which mob can ride spiders?",a:"Skeleton",o:["Zombie","Creeper","Enderman"]},
+{q:"What is used to craft ender chest?",a:"Obsidian + Eye of Ender",o:["Wood + Iron","Stone + Gold","Diamond + Glass"]},
+{q:"Which mob drops music discs?",a:"Creeper",o:["Zombie","Pig","Cow"]},
+{q:"What is used to repair tools?",a:"Anvil",o:["Furnace","Crafting Table","Chest"]},
+{q:"Which biome has ice and snow?",a:"Snowy Tundra",o:["Desert","Jungle","Savanna"]}
+
+// 🔥 Continue unique questions...
+];
+
+// 👉 ADD MORE UNIQUE QUESTIONS (you can extend easily)
+// For now system ready for 100
+
+function loadQuestion(){
+  answered=false;
+  let q=quizData[index];
+  document.getElementById("question").innerText=(index+1)+". "+q.q;
+
+  let options=[q.a,...q.o].sort(()=>Math.random()-0.5);
+
+  document.getElementById("options").innerHTML=
+    options.map(opt=>`<div class="option" onclick="checkAnswer(this,'${q.a}')">${opt}</div>`).join("");
+}
+
+function checkAnswer(el,ans){
+  if(answered) return;
+  answered=true;
+
+  let opts=document.querySelectorAll(".option");
+  opts.forEach(o=>{
+    if(o.innerText===ans) o.classList.add("correct");
+    else o.classList.add("wrong");
+  });
+
+  if(el.innerText===ans) correct++;
+  else wrong++;
+
+  document.getElementById("scoreBox").innerText="Correct: "+correct+" | Wrong: "+wrong;
+}
+
+function nextQuestion(){
+  if(!answered) return;
+
+  index++;
+  if(index<quizData.length){
+    loadQuestion();
+  } else {
+    document.getElementById("quiz").innerHTML=
+    "<h2>🎉 Congratulations! You completed all quizzes!</h2>";
+    document.querySelector(".next-btn").style.display="none";
+  }
+}
+
+loadQuestion();
+
+<!-- PARTICLES -->
+particlesJS("particles-js",{
+  particles:{
+    number:{value:60},
+    color:{value:"#38bdf8"},
+    size:{value:2},
+    move:{speed:1.5}
+  }
+});
+</script>
+<script>
+function toggleMenu() {
+  let menu = document.getElementById("sideMenu");
+
+  if (menu.style.width === "200px") {
+    menu.style.width = "0";
+  } else {
+    menu.style.width = "200px";
+  }
+}
+</script>
+
+</body>
+</html>
